@@ -1,2 +1,162 @@
-# Baby
+# The love of my life ♡´･ᴗ･`♡
 My beauty with brain girl
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rose Day</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: lavender;
+        font-family: 'Georgia', serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1 {
+        color: #b30059;
+        text-align: center;
+        z-index: 2;
+        margin-bottom: 25px;
+        padding: 0 12px;
+    }
+
+    /* Floating items */
+    .floating {
+        position: absolute;
+        animation: float linear infinite;
+        opacity: 0.9;
+        pointer-events: none;
+    }
+
+    .rose {
+        font-size: 30px;
+    }
+
+    .heart {
+        font-size: 14px;
+    }
+
+    @keyframes float {
+        from { transform: translateY(110vh); }
+        to { transform: translateY(-10vh); }
+    }
+
+    /* Letter envelope */
+    .envelope {
+        position: relative;
+        width: 170px;
+        height: 120px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+        cursor: pointer;
+        z-index: 3;
+        overflow: hidden;
+    }
+
+    .flap {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 60%;
+        background: #ff4d6d;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transform-origin: top;
+        transition: transform 0.8s ease;
+        z-index: 3;
+    }
+
+    .paper {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ff4d6d;
+        font-weight: bold;
+        transition: transform 0.8s ease;
+        z-index: 1;
+    }
+
+    .envelope.open .flap {
+        transform: rotateX(180deg);
+    }
+
+    .envelope.open .paper {
+        transform: translateY(-30px);
+    }
+
+    .message {
+        margin-top: 18px;
+        font-size: 20px;
+        color: #800040;
+        display: none;
+        z-index: 3;
+        text-align: center;
+        animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<h1>
+    Happy Rose Day, baby Eli 🌹<br>
+    Dada loves you a lot
+</h1>
+
+<div class="envelope" onclick="openLetter(this)">
+    <div class="flap"></div>
+    <div class="paper">💌 Click me</div>
+</div>
+
+<div class="message" id="secret">
+    You will always be my princess 👑🌻❤️
+</div>
+
+<script>
+    function openLetter(el) {
+        el.classList.add("open");
+        document.getElementById("secret").style.display = "block";
+    }
+
+    function createFloatingItems() {
+        const symbols = ["🌹", "❤️", "🤍"];
+        for (let i = 0; i < 70; i++) {
+            const item = document.createElement("div");
+            item.classList.add("floating");
+
+            const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+            item.innerHTML = symbol;
+
+            if (symbol === "🌹") {
+                item.classList.add("rose");
+            } else {
+                item.classList.add("heart");
+            }
+
+            item.style.left = Math.random() * 100 + "vw";
+            item.style.animationDuration = (6 + Math.random() * 6) + "s";
+            item.style.fontSize = (12 + Math.random() * 26) + "px";
+
+            document.body.appendChild(item);
+        }
+    }
+
+    createFloatingItems();
+</script>
+
+</body>
+</html>
